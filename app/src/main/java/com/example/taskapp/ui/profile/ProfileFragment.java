@@ -25,15 +25,16 @@ import static android.app.Activity.RESULT_OK;
 
 
 public class ProfileFragment extends Fragment {
+
     private ImageView ava;
-    private ActivityResultLauncher<String> arl;
     private Uri uri;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_profile, container, false);
     }
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -43,15 +44,14 @@ public class ProfileFragment extends Fragment {
             Intent in = new Intent();
             in.setAction(Intent.ACTION_PICK);
             in.setType("image/*");
-            startActivityForResult(in,1);
-
+            startActivityForResult(in, 1);
         });
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1 && resultCode == RESULT_OK){
+        if (requestCode == 1 && resultCode == RESULT_OK) {
             uri = data.getData();
             ava.setImageURI(uri);
             Glide.with(requireContext()).load(uri).circleCrop().into(ava);

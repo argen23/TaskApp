@@ -2,9 +2,20 @@
     <string name="app_name">TaskApp</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
+
+    <string name="title_ob1">Сreate</string>
+    <string name="title_ob2">Read it</string>
+    <string name="title_ob3">Learn</string>
+
+
+    <string name="desc_ob1">create notes and make notes</string>
+    <string name="desc_ob2">memorize with time</string>
+    <string name="desc_ob3">Learn and develop it</string>
+
     <string name="title_notifications">Notifications</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="save">save</string>
     <string name="type_a_new_task">Type a new task</string>
+    <string name="title">title</string>
 </resources>
