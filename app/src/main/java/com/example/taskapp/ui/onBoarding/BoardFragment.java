@@ -72,8 +72,7 @@ public class BoardFragment extends Fragment {
                 skip();
             }
         });
-//        new TabLayoutMediator(boardBinding.tabs, boardBinding.vpOnBoard, (tab, position) -> {
-//        }).attach();
+
     }
     private void skip() {
         NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment);
