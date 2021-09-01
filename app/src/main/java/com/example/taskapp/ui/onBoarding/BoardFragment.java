@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 
 import com.example.taskapp.R;
 import com.example.taskapp.databinding.FragmentBoardBinding;
+import com.example.taskapp.ui.Prefs;
 import com.example.taskapp.ui.animations.DepthPageTransformer;
 import com.example.taskapp.ui.animations.ZoomOutPageTransformer;
 import com.google.android.material.tabs.TabLayoutMediator;
@@ -69,12 +70,15 @@ public class BoardFragment extends Fragment {
         boardBinding.btnOnBoardSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 skip();
             }
         });
 
     }
     private void skip() {
+        Prefs prefs = new Prefs(requireContext());
+        prefs.saveBoardState();
         NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment);
         navController.navigateUp();
     }

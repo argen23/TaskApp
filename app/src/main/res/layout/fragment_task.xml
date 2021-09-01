@@ -14,13 +14,17 @@
         android:inputType="textCapSentences"
         android:hint="@string/type_a_new_task"
         android:padding="12dp"
+        android:background="@drawable/bg_edit"
         android:textSize="20sp"/>
+
+
     <Button
         android:id="@+id/btn_save"
         android:layout_width="match_parent"
         android:text="@string/save"
-        android:textAllCaps="true"
+        android:background="@drawable/bg_btn"
+        style="@style/ButtonStyle"
+        android:textColor="@android:color/white"
         android:layout_marginTop="20dp"
         android:layout_height="wrap_content"/>
-
 </LinearLayout>
