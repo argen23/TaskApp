@@ -20,25 +20,33 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.HomeHolder> {
 
     private List<Task> list = new ArrayList<>();
     private OnItemClickListener onItemClickListener;
+
+    public void setList(List<Task> list) {
+        this.list = list;
+        notifyDataSetChanged();
+    }
+
     public TaskAdapter() {
+
     }
 
     @NonNull
     @Override
     public HomeHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_task,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_task, parent, false);
         return new HomeHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull HomeHolder holder, int position) {
         holder.bind(list.get(position));
-        if (position %2 == 0){
+        if (position % 2 == 0) {
             holder.itemView.setBackgroundColor(Color.parseColor("#88AAA5"));
-        }else{
+        } else {
             holder.itemView.setBackgroundColor(Color.parseColor("#6DBDA0"));
-
         }
+
+        holder.itemView.setOnClickListener(v -> onItemClickListener.onClick(position));
     }
 
     @Override
@@ -46,10 +54,16 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.HomeHolder> {
         return list.size();
     }
 
+    public void addItems(List<Task> tasks) {
+        list.addAll(tasks);
+        notifyDataSetChanged();
+    }
+
     public void addItem(Task task) {
-        list.add(0,task);
+        list.add(task);
         notifyItemInserted(list.size());
     }
+
 
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
         this.onItemClickListener = onItemClickListener;
@@ -60,14 +74,23 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.HomeHolder> {
         notifyItemRemoved(position);
     }
 
+    public Task getItem(int position) {
+        return list.get(position);
+    }
+
+    public void updateItem(Task task, int position) {
+        list.set(position, task);
+        notifyItemChanged(position);
+    }
+
+
     public class HomeHolder extends RecyclerView.ViewHolder {
-        private TextView title , date;
+        private TextView title, date;
+
         public HomeHolder(@NonNull View itemView) {
             super(itemView);
-            //ordinary
-            itemView.setOnClickListener(v ->
-                    onItemClickListener.onClick(getAdapterPosition()));
-            //long
+
+            //longClick
             itemView.setOnLongClickListener(v -> {
                 onItemClickListener.onLongClick(getAdapterPosition());
                 return true;
@@ -81,6 +104,8 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.HomeHolder> {
         public void bind(Task task) {
             title.setText(task.getTitle());
             date.setText(task.getCreatedAd());
+
         }
     }
+
 }

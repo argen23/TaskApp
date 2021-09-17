@@ -1,15 +1,20 @@
 package com.example.taskapp.ui.onBoarding;
 import android.app.Activity;
+import android.os.Handler;
 import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RawRes;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.airbnb.lottie.LottieAnimationView;
+import com.airbnb.lottie.LottieImageAsset;
 import com.example.taskapp.R;
 import com.example.taskapp.databinding.ListBoardBinding;
 
@@ -19,8 +24,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ViewHolder> 
 
     private int[] titles = new int[]{R.string.title_ob1,R.string.title_ob2,R.string.title_ob3};
     private int [] descriptions = new int[]{R.string.desc_ob1,R.string.desc_ob2,R.string.desc_ob3};
-    private int [] image = new int[]{R.drawable.ic_snpt,R.drawable.ic_book,R.drawable.ic_baseline_short_text_24};
-
+    private int[] lltt = new int[]{R.raw.beercan,R.raw.sadnotebook,R.raw.notebook};
 
     @NonNull
     @Override
@@ -31,7 +35,6 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
 
         holder.bind(position);
 
@@ -51,12 +54,19 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ViewHolder> 
 
         public ViewHolder(@NonNull ListBoardBinding itemView) {
             super(itemView.getRoot());
+
         }
 
         public void bind(int position) {
             binding.tvOnBoardTitle.setText(titles[position]);
             binding.tvOnBoardDesc.setText(descriptions[position]);
-            binding.ivOnBoard.setImageResource(image[position]);
+            binding.lottieOnBoard.setAnimation(lltt[position]);
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+
+                }
+            },5000);
 
             binding.btnOnBoardGo.setText("start");
 

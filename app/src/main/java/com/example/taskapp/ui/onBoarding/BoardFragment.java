@@ -16,19 +16,15 @@ import android.view.ViewGroup;
 
 import com.example.taskapp.R;
 import com.example.taskapp.databinding.FragmentBoardBinding;
-import com.example.taskapp.ui.Prefs;
+import com.example.taskapp.room.Prefs;
 import com.example.taskapp.ui.animations.DepthPageTransformer;
-import com.example.taskapp.ui.animations.ZoomOutPageTransformer;
-import com.google.android.material.tabs.TabLayoutMediator;
 
 
 public class BoardFragment extends Fragment {
     private FragmentBoardBinding boardBinding;
-
-
     private ViewPager2 viewPager2;
 
-    @Override
+   @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         boardBinding = FragmentBoardBinding.inflate(inflater, container, false);
